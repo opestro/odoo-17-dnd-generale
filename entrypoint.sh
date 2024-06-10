@@ -3,7 +3,7 @@
 # Your pre-container startup commands here
 echo "Running pre-startup commands"
 cp -r /mnt/addons/* /mnt/extra-addons/
-chmod -R 777 /mnt/extra-addons /etc/odoo
+chmod -R 777 /mnt/extra-addons 
 
 set -e
 
