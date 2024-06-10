@@ -11,7 +11,7 @@ services:
     volumes:
         - ./postgresql:/var/lib/postgresql/data
     networks:
-      - odoo-networks
+      - odoo-network
 
   odoo-dnd-generale-17:
     image: odoo:17
