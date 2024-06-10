@@ -10,7 +10,9 @@ services:
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
-
+    networks:
+      - odoo-networks
+      
   odoo-dnd-generale-17:
     image: odoo:17
     user: root
@@ -33,7 +35,7 @@ services:
       - ./etc:/etc/odoo
     restart: always             # run as a service
     networks:
-      - proxy
+      - odoo-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.odoo-dnd-generale-17.entrypoints=http"
@@ -48,3 +50,6 @@ services:
       - "traefik.http.routers.odoo-dnd-generale-17-secure.service=odoo-dnd-generale-17"
       - "traefik.http.services.odoo-dnd-generale-17.loadbalancer.server.port=10017"
       - "traefik.docker.network=proxy"
+networks:
+  odoo-network:
+    driver: proxy
