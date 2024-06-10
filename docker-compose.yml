@@ -48,8 +48,8 @@ services:
       - "traefik.http.routers.odoo-dnd-generale-17-secure.rule=Host(`dnd-generale.dndc.pro`)"
       - "traefik.http.routers.odoo-dnd-generale-17-secure.tls=true"
       - "traefik.http.routers.odoo-dnd-generale-17-secure.service=odoo-dnd-generale-17"
-      - "traefik.http.services.odoo-dnd-generale-17.loadbalancer.server.port=10017"
-      - "traefik.docker.network=proxy"
+      - "traefik.http.services.odoo-dnd-generale-17.loadbalancer.server.port=8069"
+      - "traefik.docker.network=odoo-network"
 networks:
   odoo-network:
     external: true
