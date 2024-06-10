@@ -1,5 +1,5 @@
 #!/bin/bash
-cp -r /mnt/extra-addons/* /mnt/addons/
+#cp -r /mnt/extra-addons/* /mnt/addons/
 set -e
 
 # set the postgres database host, port, user and password according to the environment
