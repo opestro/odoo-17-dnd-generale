@@ -1,10 +1,5 @@
 #!/bin/bash
-
-# Your pre-container startup commands here
-echo "Running pre-startup commands"
-cp -r /mnt/addons/* /mnt/extra-addons/
-chmod -R 777 /mnt/extra-addons 
-
+cp -r /mnt/extra-addons/* /mnt/addons/
 set -e
 
 # set the postgres database host, port, user and password according to the environment
