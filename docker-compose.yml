@@ -11,7 +11,7 @@ services:
     volumes:
         - ./postgresql:/var/lib/postgresql/data
 
-  odoo17:
+  odoo-dnd-generale-17:
     image: odoo:17
     user: root
     depends_on:
@@ -32,4 +32,19 @@ services:
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
-    
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.odoo-dnd-generale-17.entrypoints=http"
+      # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
+      - "traefik.http.routers.odoo-dnd-generale-17.rule=Host(`dnd-generale.dndc.pro`)"
+      - "traefik.http.middlewares.odoo-dnd-generale-17-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.odoo-dnd-generale-17.middlewares=odoo-dnd-generale-17-https-redirect"
+      - "traefik.http.routers.odoo-dnd-generale-17-secure.entrypoints=https"
+      # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
+      - "traefik.http.routers.odoo-dnd-generale-17-secure.rule=Host(`dnd-generale.dndc.pro`)"
+      - "traefik.http.routers.odoo-dnd-generale-17-secure.tls=true"
+      - "traefik.http.routers.odoo-dnd-generale-17-secure.service=odoo-dnd-generale-17"
+      - "traefik.http.services.odoo-dnd-generale-17.loadbalancer.server.port=10017"
+      - "traefik.docker.network=proxy"
