@@ -4,7 +4,7 @@ services:
     image: postgres:16
     user: root
     environment:
-      - POSTGRES_USER=odoo
+      - POSTGRES_USER=odoo17
       - POSTGRES_PASSWORD=odoo17@2023
       - POSTGRES_DB=postgres
     restart: always             # run as a service
@@ -26,7 +26,7 @@ services:
     entrypoint: /entrypoint.sh
     environment:
       - HOST=db
-      - USER=odoo
+      - USER=odoo17
       - PASSWORD=odoo17@2023
     volumes:
       #- /etc/timezone:/etc/timezone:ro
