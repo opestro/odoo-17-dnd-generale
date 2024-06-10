@@ -23,7 +23,7 @@ services:
       - "20017:8072" # live chat
     tty: true
     command: --
-    entrypoint: /entrypoint.sh
+    #entrypoint: /entrypoint.sh
     environment:
       - HOST=db
       - USER=odoo17
