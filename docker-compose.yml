@@ -22,7 +22,7 @@ services:
       - "10017:8069"
       - "20017:8072" # live chat
     tty: true
-    command: /bin/bash -c "chmod -R 777 /mnt/extra-addons /etc/odoo"
+    command: --
     environment:
       - HOST=db
       - USER=odoo
