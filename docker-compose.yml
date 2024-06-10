@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db:
+  db-o-dnd-1:
     image: postgres:16
     user: root
     environment:
@@ -19,15 +19,15 @@ services:
       dockerfile: Dockerfile
     user: root
     depends_on:
-      - db
+      - db-o-dnd-1
     ports:
-      - "10017:8069"
-      - "20017:8072" # live chat
+      - "10018:8069"
+      - "20018:8072" # live chat
     tty: true
     command: --
     #entrypoint: /entrypoint.sh
     environment:
-      - HOST=db
+      - HOST=db-o-dnd-1
       - USER=odoo
       - PASSWORD=odoo17@2023
     volumes:
