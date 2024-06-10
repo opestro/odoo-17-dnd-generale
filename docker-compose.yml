@@ -13,7 +13,7 @@ services:
     networks:
       - proxy
 
-  odoo-dnd-generale-17:
+  odoo-dnd-generale-1-17:
     build:
       context: .
       dockerfile: Dockerfile
@@ -41,17 +41,17 @@ services:
       - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.odoo-dnd-generale-17.entrypoints=http"
+      - "traefik.http.routers.odoo-dnd-generale-1-17.entrypoints=http"
       # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
-      - "traefik.http.routers.odoo-dnd-generale-17.rule=Host(`dnd-o1.dndc.pro`)"
-      - "traefik.http.middlewares.odoo-dnd-generale-17-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.odoo-dnd-generale-17.middlewares=odoo-dnd-generale-17-https-redirect"
-      - "traefik.http.routers.odoo-dnd-generale-17-secure.entrypoints=https"
+      - "traefik.http.routers.odoo-dnd-generale-1-17.rule=Host(`dnd-o1.dndc.pro`)"
+      - "traefik.http.middlewares.odoo-dnd-generale-1-17-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.odoo-dnd-generale-1-17.middlewares=odoo-dnd-generale-1-17-https-redirect"
+      - "traefik.http.routers.odoo-dnd-generale-1-17-secure.entrypoints=https"
       # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
-      - "traefik.http.routers.odoo-dnd-generale-17-secure.rule=Host(`dnd-o1.dndc.pro`)"
-      - "traefik.http.routers.odoo-dnd-generale-17-secure.tls=true"
-      - "traefik.http.routers.odoo-dnd-generale-17-secure.service=odoo-dnd-generale-17"
-      - "traefik.http.services.odoo-dnd-generale-17.loadbalancer.server.port=8069"
+      - "traefik.http.routers.odoo-dnd-generale-1-17-secure.rule=Host(`dnd-o1.dndc.pro`)"
+      - "traefik.http.routers.odoo-dnd-generale-1-17-secure.tls=true"
+      - "traefik.http.routers.odoo-dnd-generale-1-17-secure.service=odoo-dnd-generale-1-17"
+      - "traefik.http.services.odoo-dnd-generale-1-17.loadbalancer.server.port=8069"
       - "traefik.docker.network=proxy"
 networks:
   proxy:
