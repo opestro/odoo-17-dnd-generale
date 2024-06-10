@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Your pre-container startup commands here
+echo "Running pre-startup commands"
+chmod -R 777 /mnt/extra-addons /etc/odoo
+
 set -e
 
 # set the postgres database host, port, user and password according to the environment
