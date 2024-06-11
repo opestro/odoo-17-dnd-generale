@@ -41,18 +41,18 @@ services:
       - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${ODOO_NAMESPACE}.entrypoints=http"
+      - "traefik.http.routers.odoo.entrypoints=http"
       # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
-      - "traefik.http.routers.${ODOO_NAMESPACE}.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
-      - "traefik.http.middlewares.${ODOO_NAMESPACE}-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.${ODOO_NAMESPACE}.middlewares=${ODOO_NAMESPACE}-https-redirect"
-      - "traefik.http.routers.${ODOO_NAMESPACE}-secure.entrypoints=https"
+      - "traefik.http.routers.odoo.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
+      - "traefik.http.middlewares.odoo-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.odoo.middlewares=odoo-https-redirect"
+      - "traefik.http.routers.odoo-secure.entrypoints=https"
       # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
-      - "traefik.http.routers.${ODOO_NAMESPACE}-secure.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
-      - "traefik.http.routers.${ODOO_NAMESPACE}-secure.tls=true"
-      - "traefik.http.routers.${ODOO_NAMESPACE}-secure.service=${ODOO_NAMESPACE}"
-      - "traefik.http.services.${ODOO_NAMESPACE}.loadbalancer.server.port=8069"
-      - "traefik.http.middlewares.${ODOO_NAMESPACE}-secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.odoo-secure.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
+      - "traefik.http.routers.odoo-secure.tls=true"
+      - "traefik.http.routers.odoo-secure.service=odoo"
+      - "traefik.http.services.odoo.loadbalancer.server.port=8069"
+      - "traefik.http.middlewares.odoo-secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.docker.network=proxy"
 networks:
   proxy:
