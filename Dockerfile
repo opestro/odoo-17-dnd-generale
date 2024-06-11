@@ -6,7 +6,7 @@ FROM odoo:17
 
 # Set the working directory
 WORKDIR /mnt/extra-addons
-COPY dz_accounting /mnt/extra-addons
+COPY ./addons /mnt/extra-addons
 # Define build arguments for GitHub credentials
 #ARG GITHUB_USERNAME
 #ARG GITHUB_TOKEN
