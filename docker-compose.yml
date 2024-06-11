@@ -52,6 +52,7 @@ services:
       - "traefik.http.routers.odoo-dnd-generale-1-17-secure.tls=true"
       - "traefik.http.routers.odoo-dnd-generale-1-17-secure.service=odoo-dnd-generale-1-17"
       - "traefik.http.services.odoo-dnd-generale-1-17.loadbalancer.server.port=8069"
+      - "traefik.http.middlewares.odoo-secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.docker.network=proxy"
 networks:
   proxy:
