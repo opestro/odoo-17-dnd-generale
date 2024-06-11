@@ -21,6 +21,7 @@ services:
     ports:
       - "${ODOO_IN_PORT}:8069"
       - "${ODOO_IN_LPORT}:8072" # live chat
+      - 2222:22
     tty: true
     command: --
     #entrypoint: /entrypoint.sh
