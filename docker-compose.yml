@@ -13,13 +13,13 @@ services:
     networks:
       - proxy
 
-  ${ODOO_NAMESPACE}:
+  odoo:
     build:
       context: .
       dockerfile: Dockerfile
     user: root
     depends_on:
-      - ${ODOO_DB_NAME}
+      - db
     ports:
       - "${ODOO_IN_PORT}:8069"
       - "${ODOO_IN_LPORT}:8072" # live chat
@@ -27,7 +27,7 @@ services:
     command: --
     #entrypoint: /entrypoint.sh
     environment:
-      - HOST=${ODOO_DB_NAME}
+      - HOST=db
       - USER=${POSTGRES_USER}
       - PASSWORD=${POSTGRES_PASSWORD}
     volumes:
