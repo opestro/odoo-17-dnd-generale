@@ -14,9 +14,7 @@ services:
       - proxy
 
   odoo:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: odoo:17
     user: root
     depends_on:
       - db
