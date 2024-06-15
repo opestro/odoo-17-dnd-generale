@@ -41,7 +41,7 @@ COPY /addons/dz_accounting /mnt/extra-addons/
 #RUN mv /addons/* /mnt/extra-addons/
 
 # Install Python dependencies
-RUN pip3 install -r requirements.txt
+#RUN pip3 install -r requirements.txt
 
 # Expose the Odoo port
 EXPOSE 8069
