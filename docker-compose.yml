@@ -10,6 +10,8 @@ services:
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
+    networks:
+      - odoo
 
   odoo17:
     image: odoo:17
@@ -33,3 +35,5 @@ services:
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
+    networks:
+      - odoo
