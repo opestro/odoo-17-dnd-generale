@@ -5,7 +5,7 @@ services:
     user: root
     environment:
       - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo17@
+      - POSTGRES_PASSWORD=odoo17@2023
       - POSTGRES_DB=postgres
     restart: always             # run as a service
     volumes:
@@ -31,7 +31,7 @@ services:
       - PORT=5432
       - HOST=db
       - USER=odoo
-      - PASSWORD=odoo17@
+      - PASSWORD=odoo17@2023
     volumes:
       - odoo-web-data:/var/lib/odoo
       #- /etc/timezone:/etc/timezone:ro
