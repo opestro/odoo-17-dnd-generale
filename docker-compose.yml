@@ -25,6 +25,7 @@ services:
     command: --
     #entrypoint: /entrypoint.sh
     environment:
+      - PORT=5432
       - HOST=db
       - USER=odoo
       - PASSWORD=odoo17@
