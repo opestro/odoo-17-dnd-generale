@@ -20,7 +20,7 @@ services:
       - db
     ports:
       - "1020:8069"
-      - "2020:8072" # live chat
+      - "2021:8072" # live chat
     tty: true
     command: --
     #entrypoint: /entrypoint.sh
