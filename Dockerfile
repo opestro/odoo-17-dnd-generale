@@ -9,7 +9,7 @@ FROM odoo:17
 WORKDIR /opt/odoo
 
 # Copy the local dz_accounting directory to the container
-COPY ./etc /etc/odoo
+COPY --chown=root:root ./etc /etc/odoo
 
 COPY ./addons /mnt/extra-addons
 #RUN chmod -R 777 /addons
