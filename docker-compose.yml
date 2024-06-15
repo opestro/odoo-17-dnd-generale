@@ -19,8 +19,8 @@ services:
     depends_on:
       - db
     ports:
-      - "1017:8069"
-      - "2017:8072" # live chat
+      - "3017:8069"
+      - "3017:8072" # live chat
     tty: true
     command: --
     #entrypoint: /entrypoint.sh
