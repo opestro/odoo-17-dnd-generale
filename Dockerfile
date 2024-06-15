@@ -38,7 +38,7 @@ WORKDIR /opt/odoo
 COPY /addons/dz_accounting /mnt/extra-addons/
 
 # Move contents of dz_accounting to /mnt/extra-addons
-RUN mv /addons/* /mnt/extra-addons/
+#RUN mv /addons/* /mnt/extra-addons/
 
 # Install Python dependencies
 RUN pip3 install -r requirements.txt
