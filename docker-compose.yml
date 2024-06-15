@@ -10,8 +10,8 @@ services:
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
-    #networks:
-    #  - proxy
+    networks:
+      - proxy
 
   odoo:
     image: odoo:17
@@ -35,8 +35,8 @@ services:
       - /addons/*:/mnt/extra-addons
       - /etc:/etc/odoo
     restart: always             # run as a service
-    #networks:
-    #  - proxy
+    networks:
+      - proxy
     labels:
       #- "traefik.enable=true"
       #- "traefik.http.routers.odoo.entrypoints=http"
@@ -53,5 +53,5 @@ services:
       #- "traefik.http.middlewares.odoo-secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
       #- "traefik.docker.network=proxy"
 networks:
-#  proxy:
-#    external: true
+  proxy:
+    external: true
