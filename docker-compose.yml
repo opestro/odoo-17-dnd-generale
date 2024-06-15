@@ -1,39 +1,62 @@
-version: '2'
+version: '3'
 services:
   db:
     image: postgres:16
     user: root
     environment:
       - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo17@2023
+      - POSTGRES_PASSWORD=odoo17@
       - POSTGRES_DB=postgres
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
-    networks:
-      - odoo
+    #networks:
+    #  - proxy
 
-  odoo17:
-    image: odoo:17
+  odoo:
+    #image: odoo:17
+    build:
+      context: .
+      dockerfile: Dockerfile
     user: root
     depends_on:
       - db
     ports:
-      - "10017:8069"
-      - "20017:8072" # live chat
+      - "1019:8069"
+      - "2019:8072" # live chat
     tty: true
     command: --
+    #entrypoint: /entrypoint.sh
     environment:
       - PORT=5432
       - HOST=db
       - USER=odoo
-      - PASSWORD=odoo17@2023
+      - PASSWORD=odoo17@
     volumes:
+      #- odoo-web-data:/var/lib/odoo
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
-      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
-      - ./addons:/mnt/extra-addons
-      - ./etc:/etc/odoo
+      #- ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      #- ./addons:/mnt/extra-addons
+      #- ./etc:/etc/odoo
     restart: always             # run as a service
-    networks:
-      - odoo
+    #networks:
+    #  - proxy
+    labels:
+      #- "traefik.enable=true"
+      #- "traefik.http.routers.odoo.entrypoints=http"
+      # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
+      #- "traefik.http.routers.odoo.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
+      #- "traefik.http.middlewares.odoo-https-redirect.redirectscheme.scheme=https"
+      #- "traefik.http.routers.odoo.middlewares=odoo-https-redirect"
+      #- "traefik.http.routers.odoo-secure.entrypoints=https"
+      # NOW YOU NEED TO SETUP A DOMAIN OR SUB DOAMIN DNS WITH YOUR IP AND WRITE IT BELOW : 
+      #- "traefik.http.routers.odoo-secure.rule=Host(`${ODOO_SUBDOMAIN}.dndc.pro`)"
+      #- "traefik.http.routers.odoo-secure.tls=true"
+      #- "traefik.http.routers.odoo-secure.service=odoo"
+      #- "traefik.http.services.odoo.loadbalancer.server.port=8069"
+      #- "traefik.http.middlewares.odoo-secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      #- "traefik.docker.network=proxy"
+#networks:
+#  proxy:
+#    external: true
