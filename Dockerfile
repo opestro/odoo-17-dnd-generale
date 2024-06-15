@@ -10,7 +10,7 @@ WORKDIR /opt/odoo
 
 # Copy the local dz_accounting directory to the container
 COPY ./etc /etc/odoo
-COPY ./addons /app/addons
+COPY ./addons /mnt/extra-addons
 
 # Move contents of dz_accounting to /mnt/extra-addons
 #RUN mv /addons/* /mnt/extra-addons/
