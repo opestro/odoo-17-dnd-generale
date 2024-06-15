@@ -33,7 +33,7 @@ services:
       - USER=odoo
       - PASSWORD=odoo17@
     volumes:
-      #- odoo-web-data:/var/lib/odoo
+      - odoo-web-data:/var/lib/odoo
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
       #- ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
