@@ -33,8 +33,8 @@ services:
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
       #- ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
-      - /addons:/mnt/extra-addons:ro
-      - /etc:/etc/odoo:ro
+      - ./addons:/mnt/extra-addons:ro
+      - ./etc:/etc/odoo:ro
     restart: always             # run as a service
     #networks:
     #  - proxy
